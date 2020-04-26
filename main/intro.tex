@@ -1,0 +1,40 @@
+\chapter{Introduction}
+\label{chap:intro}
+
+\subsection*{A classification problem}
+Data classification is the mechanism of assigning a new observation to a category from a set of categories.
+Suppose there is a truth classification function that takes new observation and outputs the true category. A classification problem is a process of finding a function (hypothesis) over all the potential functions (hypothesis space) that best fit the true classification function.
+In those problems, there is a given set of examples (with or without their true outcome), which represents the behavior needed to be assessed. This set of examples is used to find the hypothesis which is as similar as possible to the true classification function.
+In those problems, a classifier is a hypothesis that assigns a label to a given example.
+
+\subsection*{Supervised learning}
+There are various ways of finding this hypothesis (classifier), depending on the data and the existence of the expected outcome. Those are split into two main sub-groups, where each (or some) examples contain the expected outcome – those are the supervised or unsupervised learning mechanisms.
+In the supervised learning approach, each example has the expected outcome (label). In the training process, those examples are used to build the best classifier that matches an example of the problem to the expected behavior.
+In the unsupervised learning approach, the aim is to find similarities between subsets of examples and form groups of similar examples. This process is based solely on the data of the example and not considering its label (if exists).
+There is another form of learning mechanism called semi-supervised learning in which the data is partially labeled. The behavior of the data (the classifier) is learned according to the labeled examples.
+
+\subsection*{Graph classification problems}
+A graph is an object $G=(V,E)$, where $V$ is a set of vertices and $E$ is a set of edges (i.e. a set of tuples of two vertices that may contain additional data – weight, direction, label, etc.)
+The problem corresponds to data that is organized in a graph form, where the vertices are data entities and the edges represent relations between the vertices.
+Only a subset of vertices are labeled, therefore to predict the labels of the rest of the unlabeled vertices, behavioral analysis of this labeling pattern is required, i.e. a semi-supervised classification problem.
+
+\subsection*{Previous work}
+One way to perform this behavioral analysis is to analyze the data in each node by using classical approaches.
+Although, this approach ignores the graph’s structure which is the relation between the vertices.
+
+% <!-- Talk about Kipf’s approach -->
+To consider the graph's structure, one has proposed a neural-network-based model called GCN (Graph Convolutional Network). Each layer of the network is a function of the product of the graph's adjacency matrix with the input vector to the current layer and weights optimized by the network. This combination brings the topological aspects of the graph into consideration by picking the attributes of each node according to each node's neighborhood. The given problem tested on the model is a classification of textual articles into subjects where the input data to the model is a Bag-Of-Words (BOW) of each article. The adjacency matrix is first symmetrized and normalized, hence the graph's structure is transformed into an undirected graph, meaning losing a lot of structural information.
+
+\subsection*{This research}
+The GCN model described above is partly considering the graph's structure and adding extra crucial information into account. Though, it does not consider the global and local aspects of those relations, nor does it considering the asymmetric aspect of the data - i.e. when the graphs are directed.
+To solve the asymmetric issue of directed graphs, an upgrade to the model was proposed. This upgrade added extra care in each layer to handle both the adjacency matrix and the transpose to the adjacency matrix, which handles both directions of the graph's edges.
+In some cases, collecting the data can be a very expensive and error-prone process which may lead to bad prediction results.
+To solve this, another approach of prediction was proposed relying solely on topological information - various, local and global, topological features were extracted from the graph itself.
+
+In all the models, represented until this point, the data was organized in a graph structure that is taken in a specific window of time. Hence, the behavior across all the vertices (labels of the vertices) was represented by a single hypothesis.
+Though, things get more difficult when the behavior of the vertices changes in time. Given a series of snapshots of data, represented by a series of graphs with the same vertices but with different connectivity, a better classifier can be built using this change of behavior in time.
+The first basic approach to do so is to consider each snapshot as a static graph (as discussed previously) and train a classifier for each snapshot by itself. As this is a solution to the problem, it contains the earlier disadvantage of not considering historical data in the training process of each time window.
+Another approach would be to train a single model on all the graphs and evaluate it on a portion of the vertices on each snapshot by itself. This approach saves training time and data and can better handle the dynamic aspects of the data. Although, it produces worse results than the previously suggested solution, as it does not take into account the order of the snapshots, i.e. the order of time.
+A better solution would be to build a dynamic, sequential model (RNN) that is fed serially by the snapshots in time. Each layer is fed with the current snapshot and previously saved data, so the training occurs both on current behavior and historical data.
+
+% <!-- Another issue is that it can't deduct efficiently on newly arrived data, because it doesn't study the trend in time. Should talk about size of data & models? (probably not) -->

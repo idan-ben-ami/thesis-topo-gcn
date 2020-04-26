@@ -1,0 +1,17 @@
+\chapter{Conclusion and future work}
+\label{chap:conclusion}
+
+Our work is divided into several parts.
+Firstly, we have introduced a new input method to the original GCN model which improved its performance and have presented zero-internal-information classification.
+In this input method, we have calculated several features based on the topological structure of the graph. Among them was the counting of n'th order of the neighbor's labels of each vertex.
+When using the external features alone, we managed to reach close results to the results achieved when using the internal features. Moreover, we managed to surpass them when mixed the internal and external features.
+In some cases, the inner-information is very expensive or not valid at all, therefore this experiment is highly valuable.
+Another extension that we deployed to the basic model was considering the direction aspect of the graph. In the original model, the directivity of the graph was eliminated by making the adjacency matrix symmetrical. Whereas we allowed asymmetric adjacency matrix by extending the inner-layer handling of the data, which improved the results in deeper networks.
+Lastly, we have introduced a new model to handle sequences of graphs which represents snapshots in time of dynamic data.
+This new dynamic model was superior to the static model which trained and tested on each snapshot individually. Furthermore, its superiority was tested on two different networks which changed in time.
+
+Our approach relies strongly on the connectivity of the graph. hence, if the graph is too sparse or too dense, the quality of the classifications may decrease.
+Our model is very costly with resources due to the inner layer calculations and the size and amount of resources restrict the size of networks that can be handled. It is mainly affecting the LSTM based model's training.
+
+\section{Future work}
+Relevant future work may include handling weighted graphs, experimenting deeper networks, optimizing the various models' parameters, extend the methodologies to reduce the graph sizes to deploy our models on larger datasets, extending the LSTM dynamic model and asses our model on a wider range of datasets.

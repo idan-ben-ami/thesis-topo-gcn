@@ -1,0 +1,32 @@
+% This file contains the abstract part of your thesis - in English and
+% in Hebrew (within \abstractEnglish and \abstractHebrew respectively).
+%
+% Notes:
+% - This file uses the UTF-8 character set encoding for the Hebrew
+%   text not to get garbled. Keep it that way.
+% - Assuming your thesis is mainly in English, Graduate School 
+%   regulations mandate the following lengths for the abstracts:
+%
+%      Language    Min. Length   Max. Length
+%     ---------------------------------------
+%      English       200 words     500 words
+%      Hebrew      1,000 words   2,000 words
+%
+%   so that the Hebrew abstract typically has some content from
+%   the English introduction and an overview of the results, not
+%   present in the English; it is not just a translation.
+
+\abstractEnglish{
+The main approaches for node classification in graphs are information propagation and the association of the class of the node with external information. State of the art methods merge these approaches through Graph Convolutional Networks.  We here use the association of topological features of the nodes with their class to predict this class.
+Moreover, combining topological information with information propagation improves classification accuracy on the standard CiteSeer and Cora paper classification task. Topological features and information propagation produce results almost as good as text-based classification, without no textual or content information. We propose to represent the topology and information propagation through a GCN with the neighboring training node classification as an input and the current node classification as output. Such a formalism outperforms the state-of-the-art methods.
+
+\paragraph
+Graph Convolutional Networks (GCN) have emerged as one of the best methods to classify nodes using either external information or the graph structure itself through label propagation. However, current GCN approaches are based on a single snapshot of a graph or multi-graphs. We propose to combine GCN with recurrent neural networks and show that such a formalism outperforms the precision obtained in single graph-based predictions. We tested this method on a dataset of firms product similarity and shown it can be used to predict the future success of companies or forthcoming collapse. A similar comparison on a blog network and a prediction of the activity of bloggers produces similar results.
+} % end of English abstract
+
+
+\abstractHebrew{
+
+Some hebrew
+
+} % end of Hebrew abstract
