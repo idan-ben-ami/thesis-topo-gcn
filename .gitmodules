@@ -1,0 +1,6 @@
+[submodule "gcn-lstm-tex"]
+	path = gcn-lstm-tex
+	url = C:\\git\\thesis-topo-gcn\\gcn-lstm-tex
+[submodule "gcn-topo-tex"]
+	path = gcn-topo-tex
+	url = C:\\git\\thesis-topo-gcn\\gcn-topo-tex
