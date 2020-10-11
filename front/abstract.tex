@@ -14,19 +14,43 @@
 %
 %   so that the Hebrew abstract typically has some content from
 %   the English introduction and an overview of the results, not
-%   present in the English; it is not just a translation.
+%   present in English; it is not just a translation.
 
 \abstractEnglish{
-The main approaches for node classification in graphs are information propagation and the association of the class of the node with external information. State of the art methods merge these approaches through Graph Convolutional Networks.  We here use the association of topological features of the nodes with their class to predict this class.
-Moreover, combining topological information with information propagation improves classification accuracy on the standard CiteSeer and Cora paper classification task. Topological features and information propagation produce results almost as good as text-based classification, without no textual or content information. We propose to represent the topology and information propagation through a GCN with the neighboring training node classification as an input and the current node classification as output. Such a formalism outperforms the state-of-the-art methods.
-
-\paragraph
-Graph Convolutional Networks (GCN) have emerged as one of the best methods to classify nodes using either external information or the graph structure itself through label propagation. However, current GCN approaches are based on a single snapshot of a graph or multi-graphs. We propose to combine GCN with recurrent neural networks and show that such a formalism outperforms the precision obtained in single graph-based predictions. We tested this method on a dataset of firms product similarity and shown it can be used to predict the future success of companies or forthcoming collapse. A similar comparison on a blog network and a prediction of the activity of bloggers produces similar results.
+    Nowadays, the main approach for node classification in graphs is information propagation and the association of the class of the node with external information. State of the art methods merges these approaches through Graph Convolutional Networks (GCN). One major disadvantage of this method is the necessity of external content information which in many cases is hard or expensive to achieve, or in some cases can be very inaccurate.
+    
+    In this thesis, we present two papers extending the basic usage of GCN by associating topological features of the nodes in a graph, in combination or without the external information. The first paper discussed this association on static data and the second paper presented the process of building a dynamic model on top of the modified GCN building block.
+    
+    The first paper introduces the association of topological features of the nodes with their class. We describe the various topological features, suggest an improvement to the GCN logic for directed graphs (asymmetric data), and test various GCN-based architectures. We show that using only topological features and information propagation produced results almost as good as external content information (text processed through word2vec) classification. This achievement can be very useful in problems where the external content information is hard, or expensive to achieve or can be very inaccurate.  Moreover, this article has shown that combining topological information with information propagation improves classification accuracy on the standard state of the art benchmark datasets (“CiteSeer” \& “Cora” paper classification tasks).
+    
+    The second paper discusses how to handle continuous data split into snapshots, and the process of building a model for such dynamic data. We extended the models discussed in the first paper by combining LSTM layers. The model creation process consisted of four stages:
+    \begin{itemize}
+        \item N static models, one for each snapshot.
+        \item Single, unified, static model trained consecutively on all the snapshots.
+        \item Single model trained in two phases: training a single static model (as stage 2), and then replacing its last layer by an RNN.
+        \item Single combined GCN-RNN model, trained and tested as a whole.
+    \end{itemize}
+    This process allows to compare the various formalisms and prove that for dynamic-data the last stage can outperform the precision obtained by the single graph-based predictions. This method was tested on a dataset of firms' product similarities and shown it can be used to predict the future success of companies or forthcoming collapse. A similar comparison on a blog network and a prediction of the activity of bloggers produces similar results.
+    
+    In this thesis, we showed a different approach for graph-based classification using topological features on static and dynamic data. In both cases, we showed how to improve the precision obtained by using the combination of internal and external features in compare to the state-of-the-art approach. We also suggested an alternative approach that can handle the lack of internal data.
 } % end of English abstract
 
 
 \abstractHebrew{
+    כיום, הגישה המרכזית עבור סיווג קודקודים בגרפים זה פעפוע של אינפורמציה וקישור של כל קודקוד עם אינפורמציה חיצונית. הגישות הרווחות היום משלבות את שתי הגישות הללו תחת מודל הנקרא Graph Convolutional Networks או GCN. בעיה משמעותית במודל הזה היא הצורך באינפורמציה החיצונית, שלעיתים יכולה להיות מאוד קשה (או יקרה( להשגה, ולעיתים יכולה להיות גם הסתברותית או לא מדויקת.
 
-Some hebrew
+    במחקר זה, מוצגים שני מאמרים המרחיבים את השימוש הבסיסי ב-GCN על-ידי הצגת השימוש במאפיינים טופולוגיים של הקודקודים בגרף. המאמר הראשון מציג את השילוב הנ"ל עבור מודלים המטפלים במידע סטטי והמאמר השני מציג את תהליך הפיתוח של מודל דינאמי המטפל במידע דינאמי.
 
+    המאמר הראשון מציג לראשונה את השילוב של מאפיינים טופולוגיים של קודקודים עם סיווגם. תחילה, מתוארים המאפיינים השונים, מוצעת אופציה לייעול מנגנון ה-GCN עבור מידע המאורגן בגרפים מכוונים ונבחנו מספר שילובים של מאפיינים חיצוניים ופנימיים במודלי ה-GCN. הראנו ששימוש במאפיינים טופולוגיים (פנימיים) בלבד הניבו תוצאות כמעט-טובות כמו שימוש במאפיינים חיצוניים (טקסט המעובד באמצעות word2vec). ממצא זה הוא משמעותי במיוחד במקרים בהם קשה (או יקר) להשיג מידע חיצוני לקודקודים, או במצבים בהם המידע הנ"ל הוא הסתברותי או אינו מדויק. תוצאה נוספת חשובה שהוצגה במאמר זה היא ששילוב של מאפיינים טופולוגיים עם מידע חיצוני הניב תוצאות עם דיוק גבוה יותר על שני בסיסי נתונים ידועים - "CiteSeer" ו-"Cora".
+
+    המאמר השני מתייחס לטיפול במידע דינאמי אשר מבוצע עליו דיסקרטיזציה על-ידי לקיחת snapshots, וכן בתהליך בניית המודל הדינאמי המתאים לטיפול במידע זה. מאמר זה מרחיב את המודלים המתוארים במאמר הראשון על-ידי שילוב שכבות LSTM. תהליך בניית המודל מפורק לארבעה שלבים עיקריים:
+    \begin{itemize}
+        \item אימון של N מודלים סטטיים (כמו במאמר א') עבור כל Snapshot בזמן.
+        \item מודל סטטי יחיד ואחוד המאומן על-ידי כל ה-Snapshot-ים.
+        \item מודל דינאמי המורכב ומאומן משני חלקים: מודל סטטי אחוד כמו בשלב ב', ושכבת LSTM דינאמית המורכבת בסוף השלב האחרון של המודל הסטטי.
+        \item מודל דינאמי שלם GCN-RNN המאומן במלואו.
+    \end{itemize}
+    תהליך זה של בניית המודל מאפשר לנו לבחון ולהשוות כל חלק בנפרד ולהוכיח שאכן המודל האחרון המאוחד הוא המתאים ביותר לטיפול במידע מסוג זה ושביצועיו נעלים על האחרים. שיטה זו נבדקה על בסיס נתונים של דמיון בין מוצרים של חברות והראנו שניתן להשתמש בשיטה זו בכדי לחזות את ההצלחה או המפלה העתידית של חברות. השוואה דומה בוצעה על רשת שנבנתה בהתבסס על מידע של בלוג וחיזוי פעילות של בלוגרים הניב תוצאות דומות.
+    
+    במחקר זה, הראנו גישה שונה עבור סיווג על גרפים באמצעות שימוש במאפיינים טופולוגיים על מידע סטטי ומידע דינאמי (רציף). בשני המקרים, הראנו כיצד השילוב של המאפיינים הטופולוגיים שיפר את רמת דיוק הסיווג בבחינה של בסיסי נתונים ידועים. כמו כן, הראנו כיצד ניתן בכל זאת להשתמש במודלים מבוססי גרפים בהינתן חוסר של מידע חיצוני.
 } % end of Hebrew abstract

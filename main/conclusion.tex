@@ -3,7 +3,7 @@
 
 Our work is divided into several parts.
 Firstly, we have introduced a new input method to the original GCN model which improved its performance and have presented zero-internal-information classification.
-In this input method, we have calculated several features based on the topological structure of the graph. Among them was the counting of n'th order of the neighbor's labels of each vertex.
+In this input method, we have calculated several features based on the topological structure of the graph. Among them was the counting of the $n'th$ order of the neighbor's labels of each vertex.
 When using the external features alone, we managed to reach close results to the results achieved when using the internal features. Moreover, we managed to surpass them when mixed the internal and external features.
 In some cases, the inner-information is very expensive or not valid at all, therefore this experiment is highly valuable.
 Another extension that we deployed to the basic model was considering the direction aspect of the graph. In the original model, the directivity of the graph was eliminated by making the adjacency matrix symmetrical. Whereas we allowed asymmetric adjacency matrix by extending the inner-layer handling of the data, which improved the results in deeper networks.

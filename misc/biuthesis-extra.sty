@@ -1,7 +1,7 @@
 %%
-%% iitthesis-extra
+%% biuthesis-extra
 %%
-%% Extra machinery to be used with the iitthesis class, for authoring
+%% Extra machinery to be used with the biuthesis class, for authoring
 %% graduate degree theses at the Technion - Israeli Institute of Technology
 %%
 %% Contributors:
@@ -12,7 +12,7 @@
 %%
 %%
 %% "Why would I want to use this file?"
-%% 1. The iitthesis document class is very bare-bones
+%% 1. The biuthesis document class is very bare-bones
 %% 2. Theorem-style environments are all sorted out for you here, and no
 %%    conflicts with Hebrew babel!
 %% 3. Several useful workarounds and tweaks you don't know you need, even
@@ -26,7 +26,7 @@
 %%   macros you can use inline in any kind of document; put there in another
 %%   file please.
 %% - A lot of the stuff here might have gone into the document class, but
-%%   the iitthesis.cls is supposed to be relevant to any Technion thesis, and
+%%   the biuthesis.cls is supposed to be relevant to any Technion thesis, and
 %%   not impose anything in way of style, so the document class itself is
 %%   mostly bare-bones and the extras are here. Also, this file should work
 %%   with other document classes instead of report, e.g. scrreprt or memoir.
@@ -41,11 +41,11 @@
 %%   here.
 %%
 
-\def\filename{iitthesis-extra}
+\def\filename{misc/biuthesis-extra}
 \def\fileversion{v0.3}
 \def\filedate{2012/03/24}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{\filename}[\filedate\space\fileversion\space - Technion IIT Thesis extra machinery]
+\ProvidesPackage{\filename}[\filedate\space\fileversion\space - Bar-Ilan Thesis extra machinery]
 
 
 % for generating dummy text, for those chapters/sections
@@ -173,7 +173,7 @@
 %
 % If you like the boxed links, just set colorlinks=true and you
 % can leave out all of the color options.
- \ifdefined\iitcs@fullpageDraft
+ \ifdefined\biucs@fullpageDraft
   \RequirePackage{color}
   \definecolor{DarkRed}{rgb}{0.7,0.1,0.1}
   \definecolor{DarkGreen}{rgb}{0.1,0.5,0.1}
@@ -211,7 +211,7 @@
    urlcolor=black,
    menucolor=black
   }
- \fi % \iitcs@fullpageDraft
+ \fi % \biucs@fullpageDraft
 
  % The following is required for hyperref with Hebrew Babel since babel
  % redefines \arabic ; this will prevent errors about \beginL and \endL as
@@ -717,4 +717,4 @@
 
 \endinput
 %%
-%% End of file `iitthesis-extra.sty'.
+%% End of file `biuthesis-extra.sty'.

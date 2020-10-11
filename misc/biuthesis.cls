@@ -21,7 +21,7 @@
 %%
 %%
 
-\def\filename{biuthesis}
+\def\filename{misc/biuthesis}
 \def\fileversion{v0.9}
 \def\filedate{2017/09/18}
 \NeedsTeXFormat{LaTeX2e}
